@@ -15,7 +15,9 @@ class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,6 +116,82 @@ class _homePageState extends State<homePage> {
                   )
                 ),
               ],
+            ),
+            SizedBox(height: 28,),
+            Row(
+              children: [
+                Text('Inventory', style: GoogleFonts.outfit(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold
+                ),)
+              ],
+            ),
+            SizedBox(height: 22,),
+            Container(
+              height: 140,
+              decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(12), child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Reorder stock',
+                        style: GoogleFonts.outfit(color: Colors.white, fontSize: 17, fontWeight: FontWeight.normal),
+                      ),
+                      SizedBox(height: 10,),
+                      Text('No. of items',
+                        style: GoogleFonts.outfit(color: Colors.white, fontSize: 17, fontWeight: FontWeight.normal),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('532',
+                        style: GoogleFonts.outfit(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 10,),
+                      Text('12',
+                        style: GoogleFonts.outfit(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height:10),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Action to perform when the button is pressed
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16), // Padding
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30), // Rounded corners
+                      ),
+                    ),
+                    child: SizedBox(width: 100, child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('View Store', style: GoogleFonts.outfit()),
+                        SvgPicture.asset(
+                          'feather/arrow-right.svg',  // Feather Icons SVG example
+                          width: 25,
+                          height: 25,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),)
+                  )
+
+                ],
+              ),)
             )
           ],
         ),
@@ -121,43 +199,63 @@ class _homePageState extends State<homePage> {
       bottomNavigationBar: Container(
         height: 56,
         child: BottomAppBar(
-          elevation: 1,
+          elevation: 3,
           color: Colors.white,
           shape: CircularNotchedRectangle(), // Creates a notch for the FAB
           notchMargin: 0, // Margin around the notch
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
+              SvgPicture.asset(
+                'feather/user.svg',  // Feather Icons SVG example
+                width: 26,
+                height: 26,
+                color: Colors.black,
               ),
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
+              SvgPicture.asset(
+                'feather/plus-circle.svg',  // Feather Icons SVG example
+                width: 26,
+                height: 26,
+                color: Colors.black,
               ),
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
+              SvgPicture.asset(
+                'feather/layers.svg',  // Feather Icons SVG example
+                width: 26,
+                height: 26,
+                color: Colors.black,
               ),
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {},
-              ),
+              InkWell(
+                onTap: (){},
+                child: SvgPicture.asset(
+                  'feather/arrow-up.svg',  // Feather Icons SVG example
+                  width: 26,
+                  height: 26,
+                  color: Colors.black,
+                ),
+              )
             ],
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     // Action when FAB is pressed
-      //   },
-      //   child: Icon(Icons.add),
-      // ),
+      floatingActionButton: Container(
+        width: 100,
+        height: 40,
+        child: FloatingActionButton(
+          onPressed: () {
+            // Action when FAB is pressed
+          },
+          child: Text('Add Sale', style: GoogleFonts.outfit(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold
+          ),),
+          elevation: 10,
+          backgroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+        ),
+      )
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
