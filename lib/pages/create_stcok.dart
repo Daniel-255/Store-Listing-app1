@@ -31,12 +31,23 @@ class _CreateStockState extends State<CreateStock> {
         }, icon: Icon(Icons.arrow_back_outlined, size: 22,)),
         centerTitle: false,
         title: Text(
-          'Create Stock',
+          'Create new Stock',
           style: GoogleFonts.outfit(
             fontSize: 17,
             fontWeight: FontWeight.normal
           ),
-        )
+        ),
+        actions: [
+          InkWell(
+          onTap: (){},
+          child: SvgPicture.asset(
+            'feather/list.svg',  // Feather Icons SVG example
+            width: 26,
+            height: 26,
+            color: Colors.white,
+          ),
+      )
+        ],
       ),
       body: Padding(padding: EdgeInsets.all(13), child: Column(
         children: [

@@ -1,6 +1,9 @@
 import 'package:app1/pages/add_sale.dart';
+import 'package:app1/pages/all_units.dart';
 import 'package:app1/pages/create_stcok.dart';
+import 'package:app1/pages/expenses.dart';
 import 'package:app1/pages/notifications.dart';
+import 'package:app1/pages/purchases.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -58,72 +61,80 @@ class _homePageState extends State<homePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 130,
-                  width: 160,
-                  decoration: BoxDecoration(
-                      // color: Colors.blue,
-                      color: Color.fromRGBO(33, 150, 243 ,90),
-                      borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(padding: EdgeInsets.all(14), child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        'feather/list.svg',  // Feather Icons SVG example
-                        width: 26,
-                        height: 26,
-                        color: Colors.white,
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>allUnits()));
+                  },
+                  child: Container(
+                      height: 130,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        // color: Colors.blue,
+                        color: Color.fromRGBO(33, 150, 243 ,90),
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      SizedBox(height: 20,),
-                      Text('2,155', style: GoogleFonts.outfit(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      )),
+                      child: Padding(padding: EdgeInsets.all(14), child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                            'feather/list.svg',  // Feather Icons SVG example
+                            width: 26,
+                            height: 26,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 20,),
+                          Text('2,155', style: GoogleFonts.outfit(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                          )),
 
-                      Text('Total units in stock', style: GoogleFonts.outfit(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white
-                      )),
-                    ],
+                          Text('Total units in stock', style: GoogleFonts.outfit(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                          )),
+                        ],
+                      ),
+                      )
                   ),
-                  )
                 ),
-                Container(
-                  height: 130,
-                  width: 160,
-                  decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SvgPicture.asset(
-                          'feather/arrow-up-right.svg',
-                          height: 26,
-                          width: 26,
-                          color: Colors.black,
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                      height: 130,
+                      width: 160,
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SvgPicture.asset(
+                              'feather/arrow-up-right.svg',
+                              height: 26,
+                              width: 26,
+                              color: Colors.black,
+                            ),
+                            SizedBox(height: 20,),
+                            Text('435', style: GoogleFonts.outfit(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black
+                            )),
+                            Text('Total units sold', style: GoogleFonts.outfit(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black
+                            )),
+                          ],
                         ),
-                        SizedBox(height: 20,),
-                        Text('435', style: GoogleFonts.outfit(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                        )),
-                        Text('Total units sold', style: GoogleFonts.outfit(
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                        )),
-                      ],
-                    ),
-                  )
-                ),
+                      )
+                  ),
+                )
               ],
             ),
             SizedBox(height: 28,),
@@ -150,7 +161,7 @@ class _homePageState extends State<homePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Reorder stock',
+                      Text('Reorder stocks',
                         style: GoogleFonts.outfit(color: Colors.white, fontSize: 17, fontWeight: FontWeight.normal),
                       ),
                       SizedBox(height: 10,),
@@ -185,10 +196,10 @@ class _homePageState extends State<homePage> {
                         borderRadius: BorderRadius.circular(30), // Rounded corners
                       ),
                     ),
-                    child: SizedBox(width: 100, child: Row(
+                    child: SizedBox(width: 105, child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('View Store', style: GoogleFonts.outfit()),
+                        Text('View Stocks', style: GoogleFonts.outfit(color: Colors.black)),
                         SvgPicture.asset(
                           'feather/arrow-right.svg',  // Feather Icons SVG example
                           width: 25,
@@ -216,7 +227,9 @@ class _homePageState extends State<homePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>expenses()));
+                },
                 child:
                 SvgPicture.asset(
                   'feather/arrow-up.svg',  // Feather Icons SVG example
@@ -236,11 +249,16 @@ class _homePageState extends State<homePage> {
                   color: Colors.black,
                 ),
               ),
-              SvgPicture.asset(
-                'feather/pocket.svg',  // Feather Icons SVG example
-                width: 26,
-                height: 26,
-                color: Colors.black,
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>purchases()));
+                },
+                child: SvgPicture.asset(
+                  'feather/pocket.svg',  // Feather Icons SVG example
+                  width: 26,
+                  height: 26,
+                  color: Colors.black,
+                ),
               ),
               InkWell(
                 onTap: (){},
