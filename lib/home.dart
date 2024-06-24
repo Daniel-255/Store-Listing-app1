@@ -1,3 +1,6 @@
+import 'package:app1/pages/add_sale.dart';
+import 'package:app1/pages/create_stcok.dart';
+import 'package:app1/pages/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -17,6 +20,7 @@ class _homePageState extends State<homePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         centerTitle: false,
         title: Row(
@@ -33,12 +37,17 @@ class _homePageState extends State<homePage> {
                 ),),
               ],
             ),
-            SvgPicture.asset(
-              'feather/bell.svg',  // Feather Icons SVG example
-              width: 26,
-              height: 26,
-              color: Colors.black,
-            ),
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationsPoint()));
+              },
+              child: SvgPicture.asset(
+                'feather/bell.svg',  // Feather Icons SVG example
+                width: 26,
+                height: 26,
+                color: Colors.black,
+              ),
+            )
           ],
         )
       ),
@@ -129,7 +138,7 @@ class _homePageState extends State<homePage> {
             ),
             SizedBox(height: 22,),
             Container(
-              height: 140,
+              height: 145,
               decoration: BoxDecoration(
                 color: Colors.black26,
                 borderRadius: BorderRadius.circular(20)
@@ -150,7 +159,7 @@ class _homePageState extends State<homePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 7,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -163,7 +172,7 @@ class _homePageState extends State<homePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height:10),
+                  SizedBox(height:15),
                   ElevatedButton(
                     onPressed: () {
                       // Action to perform when the button is pressed
@@ -206,20 +215,29 @@ class _homePageState extends State<homePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset(
-                'feather/user.svg',  // Feather Icons SVG example
-                width: 26,
-                height: 26,
-                color: Colors.black,
+              InkWell(
+                onTap: (){},
+                child:
+                SvgPicture.asset(
+                  'feather/arrow-up.svg',  // Feather Icons SVG example
+                  width: 26,
+                  height: 26,
+                  color: Colors.black,
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateStock()));
+                },
+                child: SvgPicture.asset(
+                  'feather/plus-circle.svg',  // Feather Icons SVG example
+                  width: 26,
+                  height: 26,
+                  color: Colors.black,
+                ),
               ),
               SvgPicture.asset(
-                'feather/plus-circle.svg',  // Feather Icons SVG example
-                width: 26,
-                height: 26,
-                color: Colors.black,
-              ),
-              SvgPicture.asset(
-                'feather/layers.svg',  // Feather Icons SVG example
+                'feather/pocket.svg',  // Feather Icons SVG example
                 width: 26,
                 height: 26,
                 color: Colors.black,
@@ -227,7 +245,7 @@ class _homePageState extends State<homePage> {
               InkWell(
                 onTap: (){},
                 child: SvgPicture.asset(
-                  'feather/arrow-up.svg',  // Feather Icons SVG example
+                  'feather/user.svg',  // Feather Icons SVG example
                   width: 26,
                   height: 26,
                   color: Colors.black,
@@ -242,6 +260,7 @@ class _homePageState extends State<homePage> {
         height: 40,
         child: FloatingActionButton(
           onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>addSale()));
             // Action when FAB is pressed
           },
           child: Text('Add Sale', style: GoogleFonts.outfit(
@@ -252,7 +271,7 @@ class _homePageState extends State<homePage> {
           elevation: 10,
           backgroundColor: Colors.black,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
+              borderRadius: BorderRadius.circular(30)
           ),
         ),
       )
