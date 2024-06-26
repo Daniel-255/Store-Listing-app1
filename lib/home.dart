@@ -1,3 +1,4 @@
+import 'package:app1/pages/account.dart';
 import 'package:app1/pages/add_sale.dart';
 import 'package:app1/pages/all_units.dart';
 import 'package:app1/pages/create_stcok.dart';
@@ -261,7 +262,9 @@ class _homePageState extends State<homePage> {
                 ),
               ),
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyAccount()));
+                },
                 child: SvgPicture.asset(
                   'feather/user.svg',  // Feather Icons SVG example
                   width: 26,
