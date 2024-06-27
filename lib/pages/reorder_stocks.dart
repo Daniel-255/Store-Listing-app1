@@ -39,20 +39,34 @@ class _reorderStocksState extends State<reorderStocks> {
           child: Column(
             children: [
               Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('TZS 1,200,000', style: GoogleFonts.outfit(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
-                    )),
-                    SizedBox(height: 1,),
-                    Text('Total reorder value', style: GoogleFonts.outfit(
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal
-                    )),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('TZS 1,200,000', style: GoogleFonts.outfit(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold
+                        )),
+                        SizedBox(height: 1,),
+                        Text('Total reorder value', style: GoogleFonts.outfit(
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal
+                        )),
+                      ],
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          'feather/filter.svg',
+                          height: 26,
+                          width: 26,
+                          color: Colors.black,
+                        ),
+                    )
                   ],
-                ),
+                )
               ),
               SizedBox(height: 20,),
             ],
