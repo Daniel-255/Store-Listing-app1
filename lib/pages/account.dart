@@ -61,7 +61,7 @@ class _MyAccountState extends State<MyAccount> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.black12
+                  color: Color.fromRGBO(243, 242, 241,70),
                 ),
                 child: Padding(
                     padding: EdgeInsets.all(10),
@@ -90,7 +90,7 @@ class _MyAccountState extends State<MyAccount> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.black12
+                    color: Color.fromRGBO(243, 242, 241,70),
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(10),
@@ -119,7 +119,7 @@ class _MyAccountState extends State<MyAccount> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.black12
+                    color: Color.fromRGBO(243, 242, 241,70),
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(10),

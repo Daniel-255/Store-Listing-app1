@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:feather_icons/feather_icons.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class homePage extends StatefulWidget {
   const homePage({super.key});
@@ -150,6 +151,51 @@ class _homePageState extends State<homePage> {
               ],
             ),
             SizedBox(height: 22,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    height: 140,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(243, 242, 241,70),
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10,),
+                          SvgPicture.asset(
+                            'feather/activity.svg',
+                            height: 26,
+                            width: 26,
+                            color: Colors.black,
+                          ),
+                          SizedBox(height: 20,),
+                          Text('435', style: GoogleFonts.outfit(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
+                          )),
+                          Text('Total sales', style: GoogleFonts.outfit(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
+                          )),
+                        ],
+                      ),
+                    )
+                ),
+                CircularProgressBar(
+                  percentage: 75.0,
+                  label: "Stock",
+                ),
+
+              ],
+            ),
+            SizedBox(height: 20,),
             Container(
               height: 145,
               decoration: BoxDecoration(
@@ -299,6 +345,35 @@ class _homePageState extends State<homePage> {
         ),
       )
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+class CircularProgressBar extends StatelessWidget {
+  final double percentage;
+  final String label;
+
+  CircularProgressBar({required this.percentage, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: CircularPercentIndicator(
+        radius: 70.0,
+        lineWidth: 20.0,
+        animation: true,
+        percent: percentage / 100,
+        center: new Text(
+          "${percentage.toStringAsFixed(1)}%",
+          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 17.0),
+        ),
+        // footer: new Text(
+        //   label,
+        //   style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 17.0),
+        // ),
+        circularStrokeCap: CircularStrokeCap.round,
+        progressColor: Colors.blue,
+      ),
     );
   }
 }
