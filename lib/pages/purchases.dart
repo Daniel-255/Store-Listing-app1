@@ -39,7 +39,7 @@ class _purchasesState extends State<purchases> {
               padding: EdgeInsets.only(right: 8),
               child: InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>createPurchase()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CreatePurchase()));
                 },
                 child:
                 SvgPicture.asset(

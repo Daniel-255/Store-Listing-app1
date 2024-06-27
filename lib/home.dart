@@ -5,6 +5,7 @@ import 'package:app1/pages/create_stcok.dart';
 import 'package:app1/pages/expenses.dart';
 import 'package:app1/pages/notifications.dart';
 import 'package:app1/pages/purchases.dart';
+import 'package:app1/pages/reorder_stocks.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -187,6 +188,7 @@ class _homePageState extends State<homePage> {
                   SizedBox(height:15),
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>reorderStocks()));
                       // Action to perform when the button is pressed
                     },
                     style: ElevatedButton.styleFrom(
@@ -281,7 +283,7 @@ class _homePageState extends State<homePage> {
         height: 40,
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>addSale()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>AddSale()));
             // Action when FAB is pressed
           },
           child: Text('Add Sale', style: GoogleFonts.outfit(
