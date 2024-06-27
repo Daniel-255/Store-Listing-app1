@@ -159,7 +159,7 @@ class _RegisterState extends State<Register> {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
-                      registerUser;
+                      registerUser();
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage()));
                       // Action to perform when the button is pressed
                     },

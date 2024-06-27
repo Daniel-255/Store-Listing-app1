@@ -61,7 +61,12 @@ class _LoginState extends State<Login> {
         padding: EdgeInsets.all(14),
         child: Column(
           children: [
-            SizedBox(height: 170),
+            SizedBox(height: 90),
+            Image.asset(
+              'images/Duka-removebg-preview.png',
+              height: 120,
+              width: 120,
+            ),
             Padding(
               padding: const EdgeInsets.all(0.0),
               child: TextField(
@@ -73,7 +78,7 @@ class _LoginState extends State<Login> {
                     borderRadius: BorderRadius.circular(18.0),
                   ),
                   hintText: 'Enter your admin number',
-                  hintStyle: GoogleFonts.outfit(fontSize: 15),
+                  hintStyle: GoogleFonts.outfit(fontSize: 17),
                   label: Text('Admin Number', style: GoogleFonts.outfit(fontSize: 15)),
                 ),
               ),
@@ -91,7 +96,7 @@ class _LoginState extends State<Login> {
                     borderRadius: BorderRadius.circular(18.0),
                   ),
                   hintText: 'Enter your password',
-                  hintStyle: GoogleFonts.outfit(fontSize: 15),
+                  hintStyle: GoogleFonts.outfit(fontSize: 17),
                   label: Text('Password', style: GoogleFonts.outfit(fontSize: 15)),
                 ),
               ),
