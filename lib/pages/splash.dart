@@ -1,3 +1,4 @@
+import 'package:app1/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:app1/home.dart'; // Adjust the import to your home page
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => homePage(), // Adjust to your home page
+        builder: (context) => Login(), // Adjust to your home page
       ));
     });
   }

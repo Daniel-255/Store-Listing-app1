@@ -48,6 +48,9 @@ class _addExpensesState extends State<addExpenses> {
     });
 
     if (response.statusCode == 201) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Expense was added succesffully')),
+      );
       // If the server returns a 201 Created response, navigate to the home page
       Navigator.push(context, MaterialPageRoute(builder: (context) => homePage()));
     } else {

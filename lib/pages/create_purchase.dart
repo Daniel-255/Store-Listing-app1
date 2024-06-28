@@ -41,6 +41,7 @@ class _CreatePurchaseState extends State<CreatePurchase> {
       if (response.statusCode == 201) {
         // Successful request
         // Handle success case
+        Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Purchase was added succesffully')),
         );

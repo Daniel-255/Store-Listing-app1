@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class CreateStock extends StatefulWidget {
-  const CreateStock({super.key});
+  const CreateStock({Key? key}) : super(key: key);
 
   @override
-  State<CreateStock> createState() => _CreateStockState();
+  _CreateStockState createState() => _CreateStockState();
 }
 
 class _CreateStockState extends State<CreateStock> {
@@ -24,29 +24,42 @@ class _CreateStockState extends State<CreateStock> {
       isLoading = true;
     });
 
-    final response = await http.post(
-      Uri.parse('http://127.0.0.1:8000/api/stock'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, dynamic>{
-        'item_name': itemNameController.text,
-        'model_number': modelNumberController.text,
-        'quantity': int.parse(quantityController.text),
-        'supplier': _selectedSupplier,
-        'description': descriptionController.text,
-      }),
-    );
+    try {
+      final response = await http.post(
+        Uri.parse('http://127.0.0.1:8000/api/stock'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'item_name': itemNameController.text,
+          'model_number': modelNumberController.text,
+          'quantity': int.tryParse(quantityController.text) ?? 0,
+          'supplier': _selectedSupplier,
+          'description': descriptionController.text,
+        }),
+      );
 
-    setState(() {
-      isLoading = false;
-    });
+      setState(() {
+        isLoading = false;
+      });
 
-    if (response.statusCode == 201) {
-      Navigator.pop(context);
-    } else {
+      if (response.statusCode == 201) {
+        Navigator.pop(context); // Navigate back if successful
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Stock was added succesffully')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to create stock. Please try again.')),
+        );
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to create stock. Please try again.')),
+        SnackBar(content: Text('Error: $e')),
       );
     }
   }
@@ -71,6 +84,7 @@ class _CreateStockState extends State<CreateStock> {
       body: Padding(
         padding: EdgeInsets.all(13),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
             TextField(
@@ -83,7 +97,7 @@ class _CreateStockState extends State<CreateStock> {
                 ),
                 hintText: 'Item name',
                 hintStyle: GoogleFonts.outfit(fontSize: 15),
-                label: Text('Enter item name', style: GoogleFonts.outfit(fontSize: 15)),
+                labelText: 'Enter item name',
               ),
             ),
             SizedBox(height: 20),
@@ -97,7 +111,7 @@ class _CreateStockState extends State<CreateStock> {
                 ),
                 hintText: 'Item Model Number',
                 hintStyle: GoogleFonts.outfit(fontSize: 15),
-                label: Text('Enter item model number', style: GoogleFonts.outfit(fontSize: 15)),
+                labelText: 'Enter item model number',
               ),
             ),
             SizedBox(height: 20),
@@ -111,7 +125,7 @@ class _CreateStockState extends State<CreateStock> {
                 ),
                 hintText: 'Item Quantity',
                 hintStyle: GoogleFonts.outfit(fontSize: 15),
-                label: Text('Enter the item quantity', style: GoogleFonts.outfit(fontSize: 15)),
+                labelText: 'Enter the item quantity',
               ),
               keyboardType: TextInputType.number,
             ),
@@ -152,7 +166,7 @@ class _CreateStockState extends State<CreateStock> {
                   borderRadius: BorderRadius.circular(18.0),
                 ),
                 hintStyle: GoogleFonts.outfit(fontSize: 15),
-                label: Text('Item Description', style: GoogleFonts.outfit(fontSize: 15)),
+                labelText: 'Item Description',
               ),
             ),
             SizedBox(height: 25),
@@ -171,7 +185,10 @@ class _CreateStockState extends State<CreateStock> {
                 ),
                 child: isLoading
                     ? CircularProgressIndicator(color: Colors.white)
-                    : Text('Enter stock', style: GoogleFonts.outfit(fontSize: 17, color: Colors.white)),
+                    : Text(
+                  'Enter stock',
+                  style: GoogleFonts.outfit(fontSize: 17, color: Colors.white),
+                ),
               ),
             )
           ],

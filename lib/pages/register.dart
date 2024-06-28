@@ -42,7 +42,7 @@ class _RegisterState extends State<Register> {
     );
 
     if (response.statusCode == 201) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => homePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
     } else {
       throw Exception('Failed to register user');
     }
